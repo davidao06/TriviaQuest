@@ -14,7 +14,6 @@ let intervalID = undefined;
 const initializeTrivia = async () => {
     buttonQuestion.disabled = true;
     fetchQuestions = await getQuestions();
-    console.log(fetchQuestions);
 
     getNextQuestion();
 }
@@ -35,9 +34,7 @@ const getNextQuestion = () => {
         function frame () {
             segundos++;
             if (segundos > 10) {
-                getNextQuestion();
-                erradas++;
-                clearInterval(intervalID);
+                wrongAnswer();
             }
         }
     }
@@ -71,18 +68,18 @@ const displayQuestion = () => {
 
 const rightAnswer = () => {
     certas++;
+    clearInterval(intervalID);
     respostas.innerHTML = `<div class="correta">Resposta correta. Parabéns!</div>`;
     setTimeout(()=> {
         getNextQuestion();
-        clearInterval(intervalID);
     },2000);
 }
 
 const wrongAnswer = () => {
     erradas++;
+    clearInterval(intervalID);
     respostas.innerHTML = `<div class="incorreta">Resposta incorreta. A resposta correta era ${atualQuestion["correctAnswer"]}.</div>`;
     setTimeout(()=> {
         getNextQuestion();
-        clearInterval(intervalID);
     },2000);
 }
