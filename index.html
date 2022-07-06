@@ -10,10 +10,40 @@
 <body class="body">
     <div class="container">
         <h1 class="title">Trivia Quest</h1>
+        <span class="required">Number of questions?</span>
+        <div class="questionBoxes">
+            <div>
+                <input type="radio" name="numeroQuestoes" value="5" id="1" class="inputNumber" required><label for="1">5</label>
+            </div>
+            <div>
+                <input type="radio" name="numeroQuestoes" value="10" id="2" class="inputNumber" required><label for="2">10</label>
+            </div>
+            <div> 
+                <input type="radio" name="numeroQuestoes" value="15" id="3" class="inputNumber" required><label for="3">15</label>
+            </div>
+        </div>
+        <span class="required">Time to answer each question?</span>
+        <div class="questionBoxes">
+            <div>
+                <input type="radio" name="tempoQuestao" value="10" id="tempo1" class="inputTime" required><label for="tempo1">10s</label>
+            </div>
+            <div>
+                <input type="radio" name="tempoQuestao" value="20" id="tempo2" class="inputTime" required><label for="tempo2">20s</label>
+            </div>
+            <div> 
+                <input type="radio" name="tempoQuestao" value="0" id="tempo3" class="inputTime" required><label for="tempo3">No limit</label>
+            </div>
+        </div>
+        <div id="categoriaChoice">
+            <label for="lang">Category</label>
+            <select name="languages" id="lang">
+            </select>
+        </div>
         <button id="randomButton" class="startButton">Start</button>
     </div>
-        <div id="Perguntas" class="perguntas"></div>
-        <div id="Respostas" class="respostas"></div>
+    <div id="missingFields">
+        <span id="missingWarning">Falta preencher campos obrigatórios</span>
+    </div>
         <script src="index.js"></script>
 </body>
 </html>

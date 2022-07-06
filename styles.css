@@ -1,33 +1,45 @@
-.body {
-    background-color: rgba(33, 227, 207, 0.664)
+* {
+    margin: 0;
+    padding: 0;
+    font-size: calc(10pt + 0.4vw + 0.4vh);
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
+
+.body {
+    background-color: white;
+    overflow-x: hidden;
+}
+
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
+    align-items: center;
+    width: 100%;
+    gap:1.2rem;
 }
 
 .title {
-    text-align: center;
-    color: black;
-    font-size: 100px;
-    margin: 20px;
+    color: rgb(21, 95, 223);
+    font-size: 3rem;
+    margin-top: 0.5rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-variant: small-caps;
+}
+
+.questionBoxes {
+    display: flex;
+    flex-direction: row;
+    gap:1.5rem;
 }
 
 .startButton {
     background-color: cyan;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border: 2px solid black;
+    padding: 0.2rem 0.3rem;
+    font-size: 3rem;
     width: fit-content;
-    align-self: center;
-    margin: 20px;
-    font-size: 50px;
-    padding: 12px 28px;
     border-radius: 12px;
-    transition-duration: 0.4s;
 }
 
 .startButton:hover {
@@ -35,10 +47,6 @@
     color: white;
 }
 
-.startButton:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
 
 .startButton:active {
     background-color: black;
@@ -46,60 +54,118 @@
     transform: translateY(4px);
 }
 
-.perguntas {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+
+
+
+
+.required {
+    position: relative;
+    font-weight: 800;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.required::after{
+    content: "*";
+    color: red;
+    height: 1rem;
+    position: absolute;
+    right: -0.5rem;
+}
+
+#missingFields {
+    position: fixed;
+    bottom: 5%;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#missingFields span {
+    background-color: rgba(159, 148, 148, 0.579);
+    padding: 1rem 1rem;
+    border-radius: 24px;
+    display: none;
+}
+
+
+.perguntasContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .categoria {
-  margin: auto;
-  font-style: italic;
-  font-size: 20pt;
+    font-size: 2rem;
 }
 
 .pergunta {
-  margin: auto;
-  font-size: 18pt;
-}
-
-.respostas {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
 }
 
+.pergunta span{
+    font-size: 1.2rem;
+}
+
+.respostasContainer {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1rem;
+    position: relative;
+}
+
 .answerButton {
-    margin: 20px;
     padding: 15px 20px;
-    background-color: cadetblue;
+    background-color: rgb(224, 235, 235);
     border-radius: 12px;
-    width: 20%;
-    height: auto;
     border: 2px solid black;
-    font-size: 20pt;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 0.5rem 0.5rem 0 lightgray;
+    transition: transform 0.250s ease-in;
 }
 
-.answerButton:hover {
-    background-color: darkcyan; /* Green */
-    color: white;
+.answerButton:hover:enabled {
+    transform: translateY(-0.5rem);
+
 }
 
-.answerButton:active {
-    background-color: black;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+.answerButton:disabled {
+    opacity: 1;
+    color: black;
 }
 
 .correta {
-    font-weight: bold;
-    font-size: 20pt;
+    background-color: lightgreen;
 }
 
 .incorreta {
-    font-weight: bold;
-    font-size: 20pt;
+    background-color: red;
+}
+
+.next {
+    position: absolute;
+    bottom: -5rem;
+    place-self: center;
+    width: 10rem;
+    height: 3rem;
+    background-color: rgb(224, 235, 235);
+    border-radius: 12px;
+    border: 2px solid black;
+    transition: transform 250ms ease-in;
+}
+
+.next:hover {
+    transform: translateY(-0.5rem);
+}
+
+.barraTimer {
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+    background-color: red;
+    width: 100%;
+    height: 1rem;
 }
